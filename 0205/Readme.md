@@ -90,3 +90,26 @@ docker run -d -p 80:80 -v ./index.html:/usr/share/nginx/html/index.html --name w
 뒤의 내부 포트는 동일할 수 있음
 ```
 
+  ## Dockerfile 설명
+```
+FROM        : 기본 대상 이미지를 정의하는 속성
+MAINTAINER  : 작성자의 정보를 기록하는 속성
+RUN         : FROM의 기반 이미지 위에서 실행될 명령어 정의
+COPY        : 도커 컨테이너의 경로로 파일을 복사할 때 사용하는 속성
+COPY 로컬:컨테이너
+COPY ./index.html:/usr/share/nginx/html/index.html
+ENV         : 도커 컨테이너의 환경변수를 정의하는 속성
+EXPOSE      : 연결할 포트 번호 정의
+ENTRYPOINT  : 도커 컨테이너 생성 후 실행될 명령어 (1회 실행)
+CMD         : 실행 시, 해당 속성으로 컨테이너 켜기.
+```
+- 이미지 생성
+```bash
+dockerfile 있는 곳에 터미널을 열고
+docker build -t web:0.0.1 .
+```
+- 이미지 삭제
+```bash
+docker rmi [이미지이름]
+```
+
